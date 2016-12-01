@@ -1,0 +1,174 @@
+---
+title: "R Notebook"
+output:
+  html_notebook: default
+  html_document: default
+  pdf_document: default
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file).
+
+
+The data contains the number of men per 100 women for the entire population.
+
+```{r}
+sex <- read.csv('sex.csv', sep = ",")
+```
+
+```{r}
+summary(sex)
+```
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+qplot(x = X2005, data = sex) +
+  scale_x_continuous(limits = c(80, 120))
+```
+
+```{r}
+qplot(x = X2015, data = sex) +
+  scale_x_continuous(limits = c(80, 120))
+```
+
+```{r}
+f1 <- qplot(X2005, data = sex, geom = "freqpoly", binwidth = 1) +
+  scale_x_continuous(limits = c(90, 110))
+```
+
+```{r}
+f2 <- qplot(X2015, data = sex, geom = "freqpoly", binwidth = 1) +
+  scale_x_continuous(limits = c(90, 110))
+```
+
+```{r}
+grid.arrange(f1, f2, ncol = 2)
+```
+
+One could distinguish a certain change of trend between 2005 and 2015, with a significant spike at the point 100 in the latter.
+
+```{r}
+india <- sex[91, 2:22]
+```
+
+```{r}
+pakistan <- sex[155, 2:22]
+```
+```{r}
+sri_lanka <- sex[192, 2:22]
+```
+```{r}
+poland <- sex[161, 2:22]
+```
+```{r}
+belarus <- sex[18, 2:22]
+```
+```{r}
+czech_republic <- sex[52, 2:22]
+```
+```{r}
+ireland <- sex[95, 2:22]
+```
+```{r}
+iceland <- sex[90, 2:22]
+```
+```{r}
+norway <- sex[151, 2:22]
+```
+
+
+```{r}
+b1 <- qplot(x = 1,
+      y = unlist(india),
+      geom = "boxplot",
+      xlab = "India") +
+  coord_cartesian(ylim = c(90, 110))
+```
+
+
+```{r}
+b2 <- qplot(x = 1,
+      y = unlist(pakistan),
+      geom = "boxplot",
+      xlab = "Pakistan") +
+  coord_cartesian(ylim = c(90, 110))
+```
+
+```{r}
+b3 <- qplot(x = 1,
+      y = unlist(sri_lanka),
+      geom = "boxplot",
+      xlab = "Sri Lanka") +
+  coord_cartesian(ylim = c(90, 110))
+```
+
+```{r}
+b4 <- qplot(x = 1,
+      y = unlist(poland),
+      geom = "boxplot",
+      xlab = "Poland") +
+  coord_cartesian(ylim = c(90, 110))
+```
+
+```{r}
+b5 <- qplot(x = 1,
+      y = unlist(belarus),
+      geom = "boxplot",
+      xlab = "Belarus") +
+  coord_cartesian(ylim = c(90, 110))
+```
+
+```{r}
+b6 <- qplot(x = 1,
+      y = unlist(czech_republic),
+      geom = "boxplot",
+      xlab = "Czech Republic") +
+  coord_cartesian(ylim = c(90, 110))
+```
+
+```{r}
+b7 <- qplot(x = 1,
+      y = unlist(ireland),
+      geom = "boxplot",
+      xlab = "Ireland") +
+  coord_cartesian(ylim = c(90, 110))
+```
+
+```{r}
+b8 <- qplot(x = 1,
+      y = unlist(iceland),
+      geom = "boxplot",
+      xlab = "Iceland") +
+  coord_cartesian(ylim = c(90, 110))
+```
+
+```{r}
+b9 <- qplot(x = 1,
+      y = unlist(norway),
+      geom = "boxplot",
+      xlab = "Norway") +
+  coord_cartesian(ylim = c(90, 110))
+```
+
+```{r}
+grid.arrange(b1, b2, b3, b4, b5, b6, b7, b8, b9, ncol = 3)
+```
+
+```{r}
+qplot(x = 1,
+      y = unlist(belarus),
+      geom = "boxplot",
+      xlab = "Belarus")
+```
